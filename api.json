@@ -3,7 +3,6 @@
   "development": "Marcos André Alves da Silva",
   "date": "2026-05-08T01:59:00.000Z",
   "version": "1.0",
-  {
   "books": [
     {
       "id": 1,
@@ -35,3 +34,4 @@
     }
   ]
 }
+
