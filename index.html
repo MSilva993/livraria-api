@@ -9,41 +9,27 @@
   <div id="books"></div>
 
   <script>
-    // Simulação: carregando o JSON local
-    const data = {
-      "books": [
-        {
-          "id": 1,
-          "title": "Clean Code",
-          "subtitle": "A Handbook of Agile Software Craftsmanship",
-          "image": "https://itbook.store/img/books/9780132350884.png",
-          "price": 45.90
-        },
-        {
-          "id": 2,
-          "title": "JavaScript: The Good Parts",
-          "subtitle": "Unearthing the Excellence in JavaScript",
-          "image": "https://itbook.store/img/books/9780596517748.png",
-          "price": 39.50
-        }
-      ]
-    };
+    // Faz o fetch do arquivo JSON externo
+    fetch("api.json")
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById("books");
 
-    const container = document.getElementById("books");
+        data.books.forEach(book => {
+          const div = document.createElement("div");
+          div.className = "book";
 
-    data.books.forEach(book => {
-      const div = document.createElement("div");
-      div.className = "book";
+          div.innerHTML = `
+            <h2>${book.title}</h2>
+            <p>${book.subtitle}</p>
+            <p><strong>R$ ${book.price}</strong></p>
+            <img src="${book.image}" alt="${book.title}" width="120">
+          `;
 
-      div.innerHTML = `
-        <h2>${book.title}</h2>
-        <p>${book.subtitle}</p>
-        <p><strong>R$ ${book.price}</strong></p>
-        <img src="${book.image}" alt="${book.title}" width="120">
-      `;
-
-      container.appendChild(div);
-    });
+          container.appendChild(div);
+        });
+      })
+      .catch(error => console.error("Erro ao carregar JSON:", error));
   </script>
 </body>
 </html>
