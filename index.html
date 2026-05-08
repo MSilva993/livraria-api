@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Livraria API</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .preco {
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Lista de Livros</h1>
+  <ul id="lista"></ul>
+
+  <script>
+    // Faz a requisição ao arquivo JSON
+    fetch("api.json")
+      .then(response => response.json())
+      .then(data => {
+        const lista = document.getElementById("lista");
+        data.books.forEach(livro => {
+          const item = document.createElement("li");
+          item.innerHTML = `
+            <strong>${livro.title}</strong><br>
+            <em>${livro.subtitle}</em><br>
+            <span class="preco">R$ ${livro.price}</span>
+          `;
+          lista.appendChild(item);
+        });
+      })
+      .catch(error => console.error("Erro ao carregar API:", error));
+  </script>
+</body>
+</html>
