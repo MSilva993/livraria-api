@@ -2,52 +2,48 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Livraria API</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-    h1 {
-      color: #2c3e50;
-    }
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-    li {
-      margin: 10px 0;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    .preco {
-      color: green;
-      font-weight: bold;
-    }
-  </style>
+  <title>Lista de Livros</title>
 </head>
 <body>
   <h1>Lista de Livros</h1>
-  <ul id="lista"></ul>
+  <div id="books"></div>
 
   <script>
-    // Faz a requisição ao arquivo JSON
-    fetch("api.json")
-      .then(response => response.json())
-      .then(data => {
-        const lista = document.getElementById("lista");
-        data.books.forEach(livro => {
-          const item = document.createElement("li");
-          item.innerHTML = `
-            <strong>${livro.title}</strong><br>
-            <em>${livro.subtitle}</em><br>
-            <span class="preco">R$ ${livro.price}</span>
-          `;
-          lista.appendChild(item);
-        });
-      })
-      .catch(error => console.error("Erro ao carregar API:", error));
+    // Simulação: carregando o JSON local
+    const data = {
+      "books": [
+        {
+          "id": 1,
+          "title": "Clean Code",
+          "subtitle": "A Handbook of Agile Software Craftsmanship",
+          "image": "https://itbook.store/img/books/9780132350884.png",
+          "price": 45.90
+        },
+        {
+          "id": 2,
+          "title": "JavaScript: The Good Parts",
+          "subtitle": "Unearthing the Excellence in JavaScript",
+          "image": "https://itbook.store/img/books/9780596517748.png",
+          "price": 39.50
+        }
+      ]
+    };
+
+    const container = document.getElementById("books");
+
+    data.books.forEach(book => {
+      const div = document.createElement("div");
+      div.className = "book";
+
+      div.innerHTML = `
+        <h2>${book.title}</h2>
+        <p>${book.subtitle}</p>
+        <p><strong>R$ ${book.price}</strong></p>
+        <img src="${book.image}" alt="${book.title}" width="120">
+      `;
+
+      container.appendChild(div);
+    });
   </script>
 </body>
 </html>
