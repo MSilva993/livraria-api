@@ -41,7 +41,8 @@ jobs:
           app_location: "/" # raiz do projeto
           api_location: ""  # sem backend
           output_location: "" # sem build
-          skip_app_build: true # força deploy sem rodar npm build
+          skip_app_build: true
+          app_build_command: ""
           github_id_token: ${{ steps.idtoken.outputs.result }}
 
 
