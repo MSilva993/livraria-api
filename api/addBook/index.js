@@ -4,21 +4,18 @@
 // Versão: 1.0
 
 module.exports = async function (context, req) {
-    const livro = req.body;
+    const book = req.body;
 
-    if (!livro || !livro.title || !livro.subtitle || !livro.image || !livro.price) {
+    if (!book || !book.title) {
         context.res = {
             status: 400,
-            body: { message: "Dados incompletos para cadastro." }
+            body: { error: "Dados inválidos" }
         };
         return;
     }
 
     context.res = {
         status: 201,
-        body: {
-            message: "Livro cadastrado com sucesso!",
-            data: livro
-        }
+        body: { message: "Livro criado com sucesso", data: book }
     };
 };
