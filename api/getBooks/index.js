@@ -4,22 +4,9 @@
 // Versão: 1.0
 
 module.exports = async function (context, req) {
-
     const livros = [
-        {
-            id: 1,
-            title: "Clean Code",
-            subtitle: "A Handbook of Agile Software Craftsmanship",
-            image: "https://covers.openlibrary.org/b/isbn/9780132350881-L.jpg",
-            price: 29.99
-        },
-        {
-            id: 2,
-            title: "The Pragmatic Programmer",
-            subtitle: "Your Journey to Mastery",
-            image: "https://covers.openlibrary.org/b/isbn/9780135957056-L.jpg",
-            price: 39.99
-        }
+        { id: 1, title: "Clean Code", price: 45.90 },
+        { id: 2, title: "JavaScript: The Good Parts", price: 39.50 }
     ];
 
     context.res = {
