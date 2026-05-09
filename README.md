@@ -18,4 +18,4 @@ Este projeto contém uma API simples em formato **JSON** para manipulação de l
 - **JSON**
 
 ## Autor
-Projeto desenvolvido por *Marcos Silva* como parte dos estudos de APIs e hospedagem gratuita no **Azure**.
+Projeto desenvolvido por *Marcos André* como parte dos estudos de APIs e hospedagem gratuita no **Azure**.
