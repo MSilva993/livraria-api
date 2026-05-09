@@ -4,20 +4,10 @@
 // Versão: 1.0
 
 module.exports = async function (context, req) {
-    const id = req.query.id || (req.body && req.body.id);
-
-    if (!id) {
-        context.res = {
-            status: 400,
-            body: { message: "ID do livro é obrigatório para exclusão." }
-        };
-        return;
-    }
+    const id = context.bindingData.id;
 
     context.res = {
         status: 200,
-        body: {
-            message: `Livro com ID ${id} excluído com sucesso!`
-        }
+        body: { message: `Livro ${id} excluído com sucesso` }
     };
 };
