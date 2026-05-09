@@ -4,21 +4,19 @@
 // Versão: 1.0
 
 module.exports = async function (context, req) {
-    const livro = req.body;
+    const id = context.bindingData.id;
+    const dados = req.body;
 
-    if (!livro || !livro.id) {
+    if (!dados) {
         context.res = {
             status: 400,
-            body: { message: "ID do livro é obrigatório para atualização." }
+            body: { error: "Dados inválidos" }
         };
         return;
     }
 
     context.res = {
         status: 200,
-        body: {
-            message: "Livro atualizado com sucesso!",
-            data: livro
-        }
+        body: { message: `Livro ${id} atualizado`, data: dados }
     };
 };
